@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Issue = mongoose.model('Issue');
+const User = mongoose.model('User');
 
 // returns all issues, ordered by decreasing vote count
 exports.viewAllIssues = async(req, res) => {
@@ -43,8 +44,16 @@ exports.getIssueDetails = (req, res) => {
 };
 
 exports.upvoteIssue = async (req, res) => {
-  const issueId = req.params.id
-  const issue = await Issue.findById(issueId)
+  const issueId = req.params.id;
+  const issue = await Issue.findById(issueId);
   issue.vote += 1;
   issue.save();
-}
+  // prevent user from revoting
+  const user = await User.findById(req.user._id);
+  // cast issueId as an objectId
+  const wasVoted = mongoose.Types.ObjectId(issueId);
+  // add issue to array of voted issues for user
+  console.log('user is', user);
+  user.upvoted.push(wasVoted);
+  user.save();
+};
