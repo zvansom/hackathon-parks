@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
+const axios = require('axios');
 
 exports.getLocalReps = async (req, res) => {
-  // const reps = await fetch('')
-  res.render('localReps', { title: 'Home' })
+  res.render('localReps', { title: "Local Reps" });
 }
