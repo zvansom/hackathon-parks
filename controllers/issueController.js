@@ -16,7 +16,7 @@ exports.openNewIssue = (req, res) => {
 exports.submitNewIssue = (req, res) => {
   // add park, pic, txt, cat
   const data = req.body;
-  // TODO syntax check, where is user info?
+  // set user id from user info in session
   data.sub = req.user._id;
   // add sub
   Issue.create(data)
