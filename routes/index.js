@@ -31,7 +31,7 @@ router.post('/register',
   authController.login,
 );
 
-router.get('/local-reps', catchErrors(localRepController.getLocalReps));
+router.get('/local-reps', localRepController.getLocalReps);
 
 router.get('/logout', authController.logout);
 
