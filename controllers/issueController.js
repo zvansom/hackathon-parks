@@ -45,15 +45,22 @@ exports.getIssueDetails = (req, res) => {
 
 exports.upvoteIssue = async (req, res) => {
   const issueId = req.params.id;
+  // cast issueId as an objectId
+  const wasVoted = mongoose.Types.ObjectId(issueId);
+  // prevent user from revoting
+  const user = await User.findById(req.user._id);
+  console.log('users upvotes:', user.upvoted);
+  console.log('should match:', wasVoted);
+  if (user.upvoted.indexOf(wasVoted) != -1) {
+    req.flash('error', 'You cannot upvote that issue again');
+    res.redirect('/issues');
+  }
+  // upvote issue
   const issue = await Issue.findById(issueId);
   issue.vote += 1;
   issue.save();
-  // prevent user from revoting
-  const user = await User.findById(req.user._id);
-  // cast issueId as an objectId
-  const wasVoted = mongoose.Types.ObjectId(issueId);
   // add issue to array of voted issues for user
-  console.log('user is', user);
   user.upvoted.push(wasVoted);
   user.save();
+  res.redirect('/issues');
 };
