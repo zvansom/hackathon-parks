@@ -3,4 +3,9 @@ extends layout
 block content
   h2 My local Representatives
   h3 Reach Out to your local representatives
-  #text-box
+  each rep in reps
+    ul
+      li The reps name is: #{rep.full_name}
+      li=`The email is: ${rep.email}`
+      li=`The district is: ${rep.district}`
+      li=`Representatives chamber: ${rep.chamber}`
