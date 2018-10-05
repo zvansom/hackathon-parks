@@ -9,14 +9,18 @@ exports.viewAllIssues = async(req, res) => {
 
 // TODO form for creating a new issue
 exports.openNewIssue = (req, res) => {
-  res.render('issue');
+  const filter = Issue.filter();
+  res.render('issues/new', { title: 'Issue Submission', filter });
 };
 
 // handle form input for creating a new issue
 exports.submitNewIssue = (req, res) => {
+  console.log('req.body is:', req.body);
   // add park, pic, txt, cat
   const data = req.body;
-  // TODO syntax check, where is user info?
+  // TODO replace hardcode park with google maps api
+  data.park = 'Discovery Park';
+  // set user id from user info in session
   data.sub = req.user._id;
   // add sub
   Issue.create(data)
