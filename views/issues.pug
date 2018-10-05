@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .inner
+    a.btn.btn-danger(href="/issues/new") Report a problem
+
+  .dropdown
+    button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+      | Dropdown button
+    .dropdown-menu(aria-labelledby='dropdownMenuButton')
+      a.dropdown-item(href='#') Action
+      a.dropdown-item(href='#') Another action
+      a.dropdown-item(href='#') Something else here
+
+
+    //- each issue in issues
+    //- section
+    //-   img.issue-image(src="#" alt=issue.title)
+    //-   h3= issue.title
+    //-   p= issue.txt
+    //-   a(href="#") Upvote
+    //-   p= issue.vote
+
+    form(action="/issues" method="POST")
+      input(type="submit" value="submit")
+    
+

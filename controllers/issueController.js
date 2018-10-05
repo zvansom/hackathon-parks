@@ -17,9 +17,8 @@ exports.submitNewIssue = (req, res) => {
   // add park, pic, txt, cat
   const data = req.body;
   // TODO syntax check, where is user info?
-  const user = req.body.user;
+  data.sub = req.user._id;
   // add sub
-  data.sub = user._id;
   Issue.create(data)
     .then( () => {
       req.flash('success', 'Successfully submitted issue');
