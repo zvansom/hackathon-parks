@@ -7,7 +7,7 @@ const issueController = require('../controllers/issueController');
 const { catchErrors } = require('../handlers/errorHandlers')
 
 // Do work here
-router.get('/', homeController.home);
+router.get('/', issueController.viewAllIssues);
 
 //
 // issues
