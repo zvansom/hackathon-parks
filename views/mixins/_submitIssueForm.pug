@@ -1,20 +1,17 @@
 mixin submitIssueForm()
-    form
+    form(action='/issues' method='POST')
         .form-group
-        label(for='exampleInputEmail1') Email address
-        input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp' placeholder='Enter email')
-        small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
+        select.custom-select(name='cat')
+          option(selected='') Select a category
+          for cat in filter
+            option(value=cat) #{cat}
         .form-group
-        label(for='exampleInputPassword1') Password
-        input#exampleInputPassword1.form-control(type='password' placeholder='Password')
-        .form-check
-        input#exampleCheck1.form-check-input(type='checkbox')
-        label.form-check-label(for='exampleCheck1') Check me out
-        button.btn.btn-primary(type='submit') Submit
-    .dropdown
-      button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-        | Dropdown button
-      .dropdown-menu(aria-labelledby='dropdownMenuButton')
-        a.dropdown-item(href='#') Action
-        a.dropdown-item(href='#') Another action
-        a.dropdown-item(href='#') Something else here
+        label(for='subject') Subject
+        input(type='text' aria-describedby='subject' placeholder='TITLE TEXT FIELD' name='title')
+        .form-group
+        label(for='description') Description
+        textarea(name="txt" placeholder="Text field for problem description")
+        .form-group
+        button.btn.btn-success(type='submit') Submit
+        .form-group
+        a.btn.btn-danger(href='/issues') Cancel

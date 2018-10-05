@@ -24,4 +24,6 @@ const issueSchema = new Schema({
   }
 });
 
+issueSchema.statics.filter = () => categories;
+
 module.exports = mongoose.model('Issue', issueSchema);
