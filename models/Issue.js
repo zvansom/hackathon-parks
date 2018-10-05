@@ -9,6 +9,7 @@ const validateCat = (cat) => categories.includes(cat) ? true : false;
 
 // TODO determine if cat should be hardcoded arr of options
 const issueSchema = new Schema({
+  title: String,
   park: String,
   pic: String,
   txt: String,
