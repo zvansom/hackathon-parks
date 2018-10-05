@@ -18,6 +18,8 @@ router.post('/issues', authController.isLoggedIn,
   issueController.submitNewIssue);
 router.get('/issues/:id', issueController.getIssueDetails);
 
+router.get('/upvote/:id', catchErrors(issueController.upvoteIssue));
+
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
 

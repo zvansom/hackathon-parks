@@ -16,10 +16,9 @@ block content
 
   each issue in issues
     section
-      img.issue-image(src="#" alt=issue.title)
       .text
         h3= issue.park
         p= issue.txt
       .votes
-        a(href="#") Upvote
+        a.btn.btn-primary(href=`/upvote/${issue.id}`) Upvote
         p= issue.vote
