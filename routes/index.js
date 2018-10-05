@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const homeController = require('../controllers/homeController');
+const localRepController = require('../controllers/localRepController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const issueController = require('../controllers/issueController');
@@ -30,6 +30,8 @@ router.post('/register',
   // 3. Log the user in
   authController.login,
 );
+
+router.get('/local-reps', localRepController.getLocalReps)
 
 router.get('/logout', authController.logout);
 

@@ -3,6 +3,8 @@ extends layout
 block content
   .inner
     a.btn.btn-danger(href="/issues/new") Report a problem
+    p Make sure to reach out to your local representative to make sure this problem gets solved!
+    a.btn.btn-secondary(href="/local-reps") Reach Out
 
   .dropdown.mt-4
     button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle.btn-block(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') Problem Category
@@ -16,7 +18,7 @@ block content
     section
       img.issue-image(src="#" alt=issue.title)
       .text
-        h3= issue.title
+        h3= issue.park
         p= issue.txt
       .votes
         a(href="#") Upvote
