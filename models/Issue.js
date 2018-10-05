@@ -9,6 +9,7 @@ const validateCat = (cat) => categories.includes(cat) ? true : false;
 
 // TODO determine if cat should be hardcoded arr of options
 const issueSchema = new Schema({
+  title: String,
   park: String,
   pic: String,
   txt: String,
@@ -22,5 +23,7 @@ const issueSchema = new Schema({
     default: 0,
   }
 });
+
+issueSchema.statics.filter = () => categories;
 
 module.exports = mongoose.model('Issue', issueSchema);

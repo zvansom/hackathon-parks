@@ -1,0 +1,17 @@
+mixin submitIssueForm()
+    form(action='/issues' method='POST')
+        .form-group
+        select.custom-select(name='cat')
+          option(selected='') Select a category
+          for cat in filter
+            option(value=cat) #{cat}
+        .form-group
+        label(for='subject') Subject
+        input(type='text' aria-describedby='subject' placeholder='TITLE TEXT FIELD' name='title')
+        .form-group
+        label(for='description') Description
+        textarea(name="txt" placeholder="Text field for problem description")
+        .form-group
+        button.btn.btn-success(type='submit') Submit
+        .form-group
+        a.btn.btn-danger(href='/issues') Cancel
