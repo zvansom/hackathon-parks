@@ -9,7 +9,7 @@ exports.viewAllIssues = async(req, res) => {
 
 // TODO form for creating a new issue
 exports.openNewIssue = (req, res) => {
-  res.render('issue');
+  res.render('issues/new');
 };
 
 // handle form input for creating a new issue
