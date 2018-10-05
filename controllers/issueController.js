@@ -41,3 +41,10 @@ exports.submitNewIssue = (req, res) => {
 exports.getIssueDetails = (req, res) => {
   res.send('reached route for issue details');
 };
+
+exports.upvoteIssue = async (req, res) => {
+  const issueId = req.params.id
+  const issue = await Issue.findById(issueId)
+  issue.vote += 1;
+  issue.save();
+}
