@@ -16,16 +16,16 @@ html
           a.btn.btn-warning.my-2.my-sm-0.mr-2(href="/register") Register
           a.btn.btn-warning.my-2.my-sm-0(href="/login") Login
 
-    block messages
-      if locals.flashes
-        - const categories = Object.keys(locals.flashes)
-          each category in categories
-            each message in flashes[category]
-              .flash(class=`flash--${category}`)
-                p.flash__text!= message
-                button.flash__remove(onClick="this.parentElement.remove()") &times;
-    
     .container
+      block messages
+        if locals.flashes
+          - const categories = Object.keys(locals.flashes)
+            each category in categories
+              each message in flashes[category]
+                .flash(class=`flash--${category}`)
+                  p.flash__text!= message
+                  button.flash__remove(onClick="this.parentElement.remove()") &times;
+    
       block content
 
     block scripts
